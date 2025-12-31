@@ -1,6 +1,5 @@
 # Backend .NET
 
-Instructions pour lancer le service.
 ## Prérequis
 - .NET 6 ou supérieur
 
@@ -14,5 +13,16 @@ dotnet run
 Le service écoute sur http://localhost:5000
 
 ## Endpoints
-- **GET /hello** : Retourne un message "Hello, world!"
-- **POST /greet** : Prend un JSON `{ "name": "VotreNom" }` et répond "Hello, VotreNom!"
+- **GET /api/hello** : `?name=VotreNom` (optionnel) — Retourne "Hello, world!" ou "Hello, VotreNom!"
+- **POST /api/greet** : Body JSON `{ "name": "VotreNom" }` (min 2 caractères) — Répond "Hello, VotreNom!"
+- **GET /api/health** : Vérifie que l'API fonctionne
+
+Toutes les réponses sont au format :
+```json
+{
+	"success": true,
+	"message": "..."
+}
+```
+
+En cas d'erreur de validation, `success` est `false` et `message` explique l'erreur.
